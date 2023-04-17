@@ -69,7 +69,7 @@ with tab2:
         chart_data = pd.DataFrame(frequency.items(),columns=['word','count'])
 
         chart_data = chart_data[chart_data['count'] >= word_count]
-        st.write(alt.Chart(chart_data,title='Bar Chart - Word Frequency').mark_bar().encode(
+        st.write(alt.Chart(chart_data,title='Word Frequency').mark_bar().encode(
             x=alt.X('count:Q'),
             y=alt.Y('word:N',sort='-x'),
             tooltip=['count']
