@@ -15,12 +15,13 @@ from nltk.probability import FreqDist
 #Heading
 st.write('## Analyzing Shakespeare texts')
 
-# Creating a dictionary {} not a list [] -- #summer.txt, romeo.txt, merchant.txt files saved in github
+# Creating a dictionary {} -- #summer.txt, romeo.txt, merchant.txt files saved in github
 books = {" ":" ","A Mid Summer Night's Dream":"data/summer.txt","The Merchant of Venice":"data/merchant.txt","Romeo and Juliet":"data/romeo.txt"}
 image = st.selectbox('Choose a txt file', books.keys())
 
 image = books.get(image)
 
+#LHS parameters
 st.sidebar.header("Word Cloud Settings")
 max_word = st.sidebar.slider("Max words", 10, 200,100, 10)
 max_font = st.sidebar.slider("Size of Largest word", 50, 350,60)
@@ -34,6 +35,7 @@ if image != " ":
     dataset = open(image,"r").read().lower()    
 #dataset : Remove punctuations from text
 
+#to remove stop words manually
     stopwords=[]
     if stop_button: 
         stopwords = set(STOPWORDS)
@@ -42,7 +44,7 @@ if image != " ":
         'put', 'seem', 'asked', 'made', 'half', 'much', 'o', 
         'certainly', 'might', 'came'])
 
-    #Tokenize the dataset (tokenization: paragraph into words)
+ #Tokenize the dataset (tokenization: paragraph into words)
     tokens = word_tokenize(dataset, language='english')
     
 
@@ -55,6 +57,7 @@ if image != " ":
     frequency = nltk.FreqDist(words_ne)
  
 
+#tabnames
 tab1, tab2, tab3 = st.tabs(['Word Cloud','Bar Chart', 'View Text'])
 
 #WORDCLOUD
