@@ -80,7 +80,7 @@ with tab2:
         chart_data = chart_data[chart_data['count'] >= word_count]
         st.write(alt.Chart(chart_data,title='Word Frequency').mark_bar().encode(
             x=alt.X('count:Q'),
-            y=alt.Y('word:N',sort='-x').title('word count'),
+            y=alt.Y('word:N',sort='-x').title("word count"),
             tooltip=['count']
         ).interactive().properties(width=900))
 
